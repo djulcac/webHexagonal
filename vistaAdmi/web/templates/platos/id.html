@@ -1,0 +1,47 @@
+{% extends "layouts/baseFree.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block principal %}
+
+{% if form %}
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		
+		<form method="post" action="/plato/get/id" >
+		  <dl>
+			  {{ render_field(form.id_plato,class='form-control') }}
+		  </dl>
+		  <button class="btn btn-primary">Enviar</button>
+		</form>
+	</div>
+</div>
+{% endif %}
+{% if info %}
+<div class="row">
+	<div class="col-md-12">
+		{{info['message']}}
+		{% if 'data' in info%}
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>precio</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> {{ info['data']['id_plato']}} </td>
+					<td> {{ info['data']['nombre']}} </td>
+					<td> {{ info['data']['descripcion'] }} </td>
+					<td> {{ info['data']['precio'] }} </td>
+				</tr>
+			</tbody>
+		</table>		{%endif%}
+	</div>
+</div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+'use strict';
+
+var domain = require('../../domain');
+
+var resultMaps = [
+    {
+        mapId: 'accountMap',
+        createNew: function() {
+            return new domain.Account();
+        },
+        properties: [
+            {name: 'name', column: 'name'},
+	    {name: 'precio', column: 'precio'},
+	    {name: 'tipo', column: 'tipo'}
+        ]
+    }
+];
+
+module.exports = resultMaps;
