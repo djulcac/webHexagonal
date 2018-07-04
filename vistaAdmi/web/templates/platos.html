@@ -1,0 +1,51 @@
+{% extends "layouts/baseFree.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block principal %}
+
+{% if form %}
+<div class="row">
+	<div class="col-md-12">
+		
+		<form method="post" action="/plato/set" >
+		  <dl>
+			  {{ render_field(form.nombre,class='form-control') }}
+			  {{ render_field(form.descripcion,class='form-control') }}
+			  {{ render_field(form.precio,class='form-control') }}
+		  </dl>
+		  <button class="btn btn-primary">Enviar</button>
+		</form>
+	</div>
+</div>
+{% endif %}
+{% if info %}
+<div class="row">
+	<div class="col-md-12">
+		{{info['message']}}
+		{% if 'data' in info%}
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre del plato</th>
+					<th>Contenido (ingredientes)</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for x in info['data'] %}
+				<tr>
+					<td> {{ x['id']}} </td>
+					<td> {{ x['title']}} </td>
+					<td> {{ x['content'] }} </td>
+					<td> <a href="/platos/delete?id={{x['id']}}" class="btn btn-info" role="button">Eliminar</a> </td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>		{%endif%}
+	</div>
+</div>
+{% endif %}
+
+
+{% endblock %}

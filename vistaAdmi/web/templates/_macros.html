@@ -1,0 +1,46 @@
+{% macro render_field(field) %}
+	<div class="form-group">
+		<dt>{{ field.label }}
+		<dd>{{ field(**kwargs)|safe }}
+		{% if field.errors %}
+			<ul class="alert alert-danger">
+			{% for error in field.errors %}
+				<li>{{ error }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		</dd>
+	</div>
+  
+{% endmacro %}
+
+{% macro mostrarLibre(field) %}
+		{{ field.label }}
+		{{ field(**kwargs)|safe }}
+		{% if field.errors %}
+			<ul class="alert alert-danger">
+			{% for error in field.errors %}
+				<li>{{ error }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}  
+{% endmacro %}
+
+{% macro mostrarHorizontal(field) %}
+<div class="form-group">
+	<div class="col-sm-3">
+		{{ field.label }}
+	</div>
+	<div class="col-sm-6">
+		{{ field(**kwargs)|safe }}
+		{% if field.errors %}
+			<ul class="alert alert-danger">
+			{% for error in field.errors %}
+				<li>{{ error }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+</div>
+		
+{% endmacro %}

@@ -1,0 +1,42 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/">Fooders</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+		  <li><a href="/platos">Platos</a></li>
+		  <li><a href="/platos/nuevo">Nuevo</a></li>
+		  <li><a href="/plato/set">Set</a></li>
+		  <li><a href="/plato/get/all">getAll</a></li>
+		  <li><a href="/plato/get/id">getId</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/signup"><span class=""></span> Sign Up</a></li>
+        {% if not session['usuario'] %}
+		<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		{% else %}
+		<li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> {{ session['usuario'] }}</a></li>
+		{% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+	<div class="col-md-12">
+	{% block principal %}{%endblock %}
+	</div>
+</div>
+
+{% endblock %}
+
