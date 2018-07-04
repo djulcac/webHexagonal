@@ -5,6 +5,7 @@ module.exports = {
 };
 
 var urldb = "https://c5u2jk30nd.execute-api.us-west-2.amazonaws.com/nuevo/";
+urldb = "http://10.20.0.233:8000/";
 /**
  * Adición de las rutas a la API.
  */
@@ -17,7 +18,7 @@ function addRoutes(api) {
     api.delete('/productos/:id', deleteAccount);
     
     api.post('/restaurantes', postRestaurantes);
-    //api.put('/restaurantes/:id', putRestaurante);
+    //api.put('/restaurantes/:id', putRestaurante);w
     //api.get('/restaurantes/:id', getRestaurante);
     api.get('/restaurantes', getRestaurantes);
     //api.delete('/restaurantes/:id', deleteRestaurante);
@@ -153,7 +154,7 @@ function getRestaurantes(req, res) {
         .then(function(accounts) {
             //res.send(accounts);
             var Request = require("request");
-			Request.get(urldb+"platos", (error, response, body) => {
+			Request.get(urldb+"restaurantes", (error, response, body) => {
 				if(error) {
 					console.log('bb');
 					return console.dir(error);
@@ -172,15 +173,24 @@ function getRestaurantes(req, res) {
 function postRestaurantes(req, res) {
     accountService.getAccounts()
         .then(function(accounts) {
-            //res.send(accounts);
+        	console.log(req.head);
+        	console.log('--');
+        	console.log(req.body);
+        	
+        	var options = {
+			  uri: urldb+"restaurantes",
+			  method: 'POST',
+			  json: true,
+			  body: {'my_date' : 'json'}
+			};
             var Request = require("request");
-			Request.get(urldb+"platos", (error, response, body) => {
-				if(error) {
-					console.log('bb');
+			Request.post(options, (error, response, body) => {
+				if(error){
 					return console.dir(error);
-					//res.send(JSON.parse(body));
 				}
-				res.send(JSON.parse(body));
+		    	console.log('--');
+		    	console.log(body);
+				res.status(200).send({'message': "correcto"});
 			});
             //.send('ff');
         })
@@ -192,7 +202,6 @@ function postRestaurantes(req, res) {
 
 // no va
 function createAccount(req, res) {
-	
     var accountData = req.body;
 
     accountService.createAccount(accountData)
