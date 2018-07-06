@@ -1,0 +1,69 @@
+/*!
+ * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template-overviews/scrolling-nav)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
+ */
+
+header {
+  padding: 154px 0 100px;
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px;
+  }
+}
+
+section {
+  padding: 150px 0;
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+
+}
+
+
+header{
+  /* The image used */
+  background-image: url(imagenfondo.jpg) ;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.bienvenido{
+  background: #333333;
+  font-size: 80px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+/* Set the size of the div element that contains the map */
+#map {
+  height: 350px;  /* The height is 400 pixels */
+  width: 80%;  /* The width is the width of the web page */
+}
+
+.modal-header, .close {
+  background-color: #5cb85c;
+  color:white !important;
+  text-align: center;
+  font-size: 30px;
+}
+.modal-footer {
+  background-color: #f9f9f9;
+  color: azure;
+}
+
+option{
+  background: #333333;
+}
+option:hover{
+  background: #f9f9f9;
+}
